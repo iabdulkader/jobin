@@ -1,0 +1,81 @@
+body{
+  background-color: #002b36;
+  margin: 0;
+}
+.wrapper{
+  display: flex;
+  padding: 1rem 0.5rem;
+  font-size: 1rem;
+}
+pre{
+  margin: 0;
+}
+#code-display{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.line-numbers{
+  padding: 0;
+  color: #e9e9e9;
+  font-family: Monospace;
+  text-align: end;
+}
+.line-number{
+  display: block;
+}
+textarea{
+  background-color: transparent;
+  resize: none;
+  width: 100%;
+  padding: 0;
+  margin-left: 1rem;
+  color: #e9e9e9;
+  min-height: calc(100vh - 4.5rem);
+  border: none;
+  outline: none;
+}
+
+
+/* Header Section */
+.head{
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #2f3e41;
+}
+.logo{
+  color: white;
+  margin-left: 10px;
+  opacity: 60%;
+  transition: opacity 200ms ease-in-out;
+}
+.logo:hover{
+  opacity: 1;
+}
+.logo a{
+  text-decoration: none;
+  color: white;
+}
+.buttons{
+  display: flex;
+  margin-right: 10px;
+}
+.btn{
+  background: transparent;
+  border: solid 1px rgba(232,230,230, 0.4);
+  border-radius: 5px;
+  padding: 0.3rem 0.6rem;
+  color: white;
+  cursor: pointer;
+  transition: background 200ms ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn:hover{
+  background: rgb(94,158,160);
+}
+.buttons > * + *{
+  margin-left: 0.25rem;
+}
