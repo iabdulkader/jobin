@@ -15,10 +15,11 @@ mongoose.connect(process.env.MONGO_URI, {
 }) 
 
 app.get("/", (req, res) =>{
-  const code = `Hey dude
-whats your problem 
-to do those 
-things`;
+  const code = `Hey Dude 🙂
+What's Up,
+I am a pastebin.
+Give Me something I will store that
+And provide you your text's Share link`;
   res.render("code-display", { code, language: 'plaintext' })
 });
 
@@ -58,4 +59,6 @@ app.get('/:id', async (req, res) => {
   }
 })
 
-app.listen("3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT);
