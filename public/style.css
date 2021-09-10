@@ -5,7 +5,9 @@ body{
 .wrapper{
   display: flex;
   padding: 1rem 0.5rem;
-  font-size: 1rem;
+  font-size: 0.84rem;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 pre{
   margin: 0;
@@ -30,7 +32,7 @@ textarea{
   padding: 0;
   margin-left: 1rem;
   color: #e9e9e9;
-  min-height: calc(100vh - 4.5rem);
+  min-height: calc(100vh - 5.1rem);
   border: none;
   outline: none;
 }
@@ -65,8 +67,9 @@ textarea{
 }
 .btn{
   background: transparent;
-  border: solid 1px rgba(232,230,230, 0.4);
-  border-radius: 5px;
+  border: none;
+  /*border: solid 1px rgba(232,230,230, 0.4);*/
+  /*border-radius: 5px;*/
   padding: 0.3rem 0.6rem;
   color: white;
   cursor: pointer;
@@ -80,3 +83,4 @@ textarea{
 .buttons > * + *{
   margin-left: 0.25rem;
 }
+
