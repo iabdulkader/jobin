@@ -18,6 +18,7 @@
       <textarea autofocus name="value"><%= locals.value %></textarea>
     </div>
   </form>
+      <%- include('_footer.ejs', { id: locals.id }) %>
   <script>
     autosize(document.querySelector('textarea'))
    </script>
