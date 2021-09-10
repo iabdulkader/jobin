@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 
 require('dotenv').config();
@@ -12,7 +12,7 @@ const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-}) 
+});
 
 app.get("/", (req, res) => {
   const code = `Hey Dude 🙂
@@ -20,44 +20,45 @@ What's Up,
 I am a pastebin.
 Give Me something I will store that
 And provide you your text's Share link`;
-  res.render("code-display", { code, language: 'plaintext' })
+
+  res.render("code-display", { code, language: 'plaintext' });
 });
 
 app.get("/new", (req, res) => {
-  res.render("new")
+  res.render("new");
 });
 
 app.post("/save", async (req, res) => {
   const value = req.body.value;
   try {
     const document = await Document.create({ value });
-    res.redirect(`/${document.id}`)
+    res.redirect(`/${document.id}`);
   } catch (e) {
-    res.render('new', { value })
+    res.render('new', { value });
   }
-})
+});
 
 app.get('/:id', async (req, res) => {
   const id = req.params.id;
   try {
     const document = await Document.findById(id);
     
-    res.render('code-display', { code: document.value, id })
+    res.render('code-display', { code: document.value, id });
   } catch (e) {
-    res.redirect('/')
+    res.redirect('/');
   }
-})
+});
 
 app.get('/:id/duplicate', async (req, res) => {
   const id = req.params.id;
    try {
     const document = await Document.findById(id);
     
-    res.render('new', { value: document.value })
+    res.render('new', { value: document.value });
   } catch (e) {
-    res.redirect(`/${id}`)
+    res.redirect(`/${id}`);
   }
-})
+});
 
 app.get('/:id/raw', async (req, res) => {
   const id = req.params.id;
@@ -66,12 +67,12 @@ app.get('/:id/raw', async (req, res) => {
     
     const code = `${document.value}`;
     
-    res.render('raw', { code })
+    res.render('raw', { code });
     
   } catch (e) {
-    res.redirect(`/${id}`)
+    res.redirect(`/${id}`);
   }
-})
+});
 
 
 const PORT = process.env.PORT || 3000;
