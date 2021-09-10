@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
 }) 
 
-app.get("/", (req, res) =>{
+app.get("/", (req, res) => {
   const code = `Hey Dude 🙂
 What's Up,
 I am a pastebin.
@@ -37,6 +37,17 @@ app.post("/save", async (req, res) => {
   }
 })
 
+app.get('/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const document = await Document.findById(id);
+    
+    res.render('code-display', { code: document.value, id })
+  } catch (e) {
+    res.redirect('/')
+  }
+})
+
 app.get('/:id/duplicate', async (req, res) => {
   const id = req.params.id;
    try {
@@ -48,16 +59,20 @@ app.get('/:id/duplicate', async (req, res) => {
   }
 })
 
-app.get('/:id', async (req, res) => {
+app.get('/:id/raw', async (req, res) => {
   const id = req.params.id;
-  try {
+   try {
     const document = await Document.findById(id);
     
-    res.render('code-display', { code: document.value, id })
+    const code = `${document.value}`;
+    
+    res.render('raw', { code })
+    
   } catch (e) {
-    res.redirect('/')
+    res.redirect(`/${id}`)
   }
 })
+
 
 const PORT = process.env.PORT || 3000;
 
