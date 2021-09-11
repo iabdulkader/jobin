@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/5.0.0/autosize.min.js" integrity="sha512-zibtOTbkMuTivXGk5b8yJFGLIB1jF90NuV7gwNcVWL3xZx/I1HdkXU2pCZhadsuaS5HMUzabvRqK4WmWeKrwUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="/raw.css">
   <title>jobin - Raw</title>
 </head>
 <body class="raw">
-<pre><code><%= code %></code></pre>
+<textarea readonly><%= code %></textarea>
+<script>
+    autosize(document.querySelector('textarea'))
+   </script>
 </body>
 </html>
