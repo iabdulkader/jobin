@@ -1,4 +1,5 @@
 const express = require('express');
+const { nanoid } = require("nanoid");
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static('public'));
@@ -30,47 +31,51 @@ app.get("/new", (req, res) => {
 
 app.post("/save", async (req, res) => {
   const value = req.body.value;
+  const slug = nanoid(6).toLowerCase();
   try {
-    const document = await Document.create({ value });
-    res.redirect(`/${document.id}`);
+    const document = await Document.create({ value, slug });
+    res.redirect(`/${document.slug}`);
   } catch (e) {
     res.render('new', { value });
   }
 });
 
-app.get('/:id', async (req, res) => {
-  const id = req.params.id;
+app.get('/:slug', async (req, res) => {
+  const slug = req.params.slug;
+  //const id = req.params.id;
   try {
-    const document = await Document.findById(id);
+    const document = await Document.findOne({ slug });
     
-    res.render('code-display', { code: document.value, id });
+    //const id = document.id;
+    
+    res.render('code-display', { code: document.value, slug });
   } catch (e) {
     res.redirect('/');
   }
 });
 
-app.get('/:id/duplicate', async (req, res) => {
-  const id = req.params.id;
+app.get('/:slug/duplicate', async (req, res) => {
+  const slug = req.params.slug;
    try {
-    const document = await Document.findById(id);
+    const document = await Document.findOne({ slug });
     
     res.render('new', { value: document.value });
   } catch (e) {
-    res.redirect(`/${id}`);
+    res.redirect(`/${slug}`);
   }
 });
 
-app.get('/:id/raw', async (req, res) => {
-  const id = req.params.id;
+app.get('/:slug/raw', async (req, res) => {
+  const slug = req.params.slug;
    try {
-    const document = await Document.findById(id);
+    const document = await Document.findOne({ slug });
     
     const code = `${document.value}`;
     
     res.render('raw', { code });
     
   } catch (e) {
-    res.redirect(`/${id}`);
+    res.redirect(`/${slug}`);
   }
 });
 

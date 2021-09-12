@@ -12,7 +12,7 @@
   
 </head>
 <body>
-  <%- include('_header.ejs', { id: locals.id }) %>
+  <%- include('_header.ejs', { slug: locals.slug }) %>
   <div class="wrapper">
     <div class="line-numbers">
       <% for(let i = 1; i <= code.split("\n").length; i++){ %>

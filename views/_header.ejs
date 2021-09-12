@@ -8,9 +8,9 @@
     <% if (locals.canSave){ %>
     <button class="btn" type="submit"><i class="fas fa-save"></i></button>
     <% } %>
-    <% if (locals.id != null) { %>
-          <a href="/<%= locals.id %>/raw" class="btn"><img src="/raw.svg"></img></a>
-          <a href="/<%= locals.id %>/duplicate" class="btn"><i class="fa fa-clone" aria-hidden="true"></i></a>
+    <% if (locals.slug != null) { %>
+          <a href="/<%= locals.slug %>/raw" class="btn"><img src="/raw.svg"></img></a>
+          <a href="/<%= locals.slug %>/duplicate" class="btn"><i class="fa fa-clone" aria-hidden="true"></i></a>
     <% } %>
   </div>
 </div>
