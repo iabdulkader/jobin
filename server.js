@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const Document = require("./models/Document");
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
