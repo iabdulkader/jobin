@@ -79,6 +79,12 @@ app.get('/:slug/raw', async (req, res) => {
   }
 });
 
+// api test
+app.get("/api", (req, res) => {
+  res.json({
+    message: "Hello"
+  })
+})
 
 const PORT = process.env.PORT || 3000;
 
