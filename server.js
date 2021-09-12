@@ -29,6 +29,13 @@ app.get("/new", (req, res) => {
   res.render("new");
 });
 
+// api test
+app.get("/api", (req, res) => {
+  res.json({
+    message: "hello"
+  })
+});
+
 app.post("/save", async (req, res) => {
   const value = req.body.value;
   const slug = nanoid(6).toLowerCase();
@@ -79,12 +86,7 @@ app.get('/:slug/raw', async (req, res) => {
   }
 });
 
-// api test
-app.get("/api", (req, res) => {
-  res.json({
-    message: "Hello"
-  })
-})
+
 
 const PORT = process.env.PORT || 3000;
 
