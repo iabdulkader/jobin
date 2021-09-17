@@ -1,13 +1,23 @@
 const express = require('express');
 const { nanoid } = require("nanoid");
+const { wakeDyno } = require('heroku-keep-awake');
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-
 require('dotenv').config();
 
+
+// Keep Heroku Dyno alive
+const DYNO_URL = process.env.BASE_URL;
+const opts = {
+    interval: 25,
+    logging: false,
+    stopTimes: { start: '18:50', end: '02:00' }
+}
+
+// Database Model
 const Document = require("./models/Document");
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGODB_URI, {
@@ -15,6 +25,7 @@ mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
 });
 
+// Routes
 app.get("/", (req, res) => {
   const code = `Hey Dude 🙂
 What's Up,
@@ -85,4 +96,6 @@ app.get('/:slug/raw', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  wakeDyno(DYNO_URL, opts);
+});
