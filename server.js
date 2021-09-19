@@ -10,6 +10,7 @@ const saveRoute = require("./routes/saveRoute");
 const getBySlugRoute = require("./routes/getBySlugRoute");
 const duplicateRoute = require("./routes/duplicateRoute");
 const rawRoute = require("./routes/rawRoute");
+const createBin = require("./routes/createBin");
 
 
 // Middlewares
@@ -17,6 +18,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
 
 
 
@@ -39,9 +41,10 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.get("/", homeRoute);
 app.get("/new", newRoute);
 app.post("/save", saveRoute);
-app.get('/:slug', getBySlugRoute);
-app.get('/:slug/duplicate', duplicateRoute);
-app.get('/:slug/raw', rawRoute);
+app.get("/:slug", getBySlugRoute);
+app.get("/:slug/duplicate", duplicateRoute);
+app.get("/:slug/raw", rawRoute);
+app.post("/create", createBin)
 
 
 
