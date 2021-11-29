@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require("mongoose");
-const { wakeDyno } = require('heroku-keep-awake');
+//const { wakeDyno } = require('heroku-keep-awake');
 require('dotenv').config();
 
 // Routes Import
@@ -24,12 +24,12 @@ app.use(express.json())
 
 
 // Keep Heroku Dyno alive
-const DYNO_URL = process.env.BASE_URL;
-const opts = {
-    interval: 25,
-    logging: false,
-    stopTimes: { start: '18:50', end: '02:00' }
-}
+//const DYNO_URL = process.env.BASE_URL;
+// const opts = {
+//     interval: 25,
+//     logging: false,
+//     stopTimes: { start: '18:50', end: '02:00' }
+// }
 
 // Database Connection
 mongoose.connect(process.env.MONGODB_URI, {
@@ -52,5 +52,5 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log("Listening...")
-  wakeDyno(DYNO_URL, opts);
+ // wakeDyno(DYNO_URL, opts);
 });
