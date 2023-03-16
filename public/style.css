@@ -1,8 +1,8 @@
-body{
+body {
   background-color: #002b36;
   margin: 0;
 }
-.wrapper{
+.wrapper {
   display: flex;
   padding: 1rem 0.5rem;
   font-size: 0.84rem;
@@ -10,23 +10,23 @@ body{
   overflow-x: auto;
   min-height: calc(100vh - 5.7rem);
 }
-pre{
+pre {
   margin: 0;
 }
-#code-display{
+#code-display {
   padding-top: 0;
   padding-bottom: 0;
 }
-.line-numbers{
+.line-numbers {
   padding: 0;
   color: #e9e9e9;
   font-family: Monospace;
   text-align: end;
 }
-.line-number{
+.line-number {
   display: block;
 }
-textarea{
+textarea {
   background-color: transparent;
   resize: none;
   width: 100%;
@@ -37,9 +37,8 @@ textarea{
   outline: none;
 }
 
-
 /* Header Section */
-.head{
+.head {
   height: 2.5rem;
   display: flex;
   justify-content: space-between;
@@ -47,24 +46,24 @@ textarea{
   width: 100%;
   background-color: #2f3e41;
 }
-.logo{
+.logo {
   color: white;
   margin-left: 10px;
   opacity: 60%;
   transition: opacity 200ms ease-in-out;
 }
-.logo:hover{
+.logo:hover {
   opacity: 1;
 }
-.logo a{
+.logo a {
   text-decoration: none;
   color: white;
 }
-.buttons{
+.buttons {
   display: flex;
   margin-right: 10px;
 }
-.btn{
+.btn {
   background: transparent;
   border: none;
   padding: 0.3rem 0.6rem;
@@ -74,21 +73,21 @@ textarea{
   display: inline-block;
   text-decoration: none;
 }
-.btn:hover{
-  background: rgb(94,158,160);
+.btn:hover {
+  background: rgb(94, 158, 160);
 }
-.buttons > * + *{
+.buttons > * + * {
   margin-left: 0.25rem;
 }
 
 /* Footer */
-.footer{
+.footer {
   background-color: #2f3e41;
   height: 1.2rem;
   color: white;
   position: relative;
 }
-.footer-content a{
+.footer-content a {
   text-decoration: none;
   color: grey;
   font-size: 0.6rem;
@@ -96,7 +95,7 @@ textarea{
   padding: 0;
   display: block;
 }
-.footer-content{
+.footer-content {
   height: 100%;
   display: flex;
   align-items: center;

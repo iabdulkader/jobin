@@ -1,7 +1,7 @@
-const express = require('express');
+const express = require("express");
 const mongoose = require("mongoose");
 //const { wakeDyno } = require('heroku-keep-awake');
-require('dotenv').config();
+require("dotenv").config();
 
 // Routes Import
 const homeRoute = require("./routes/homeRoute");
@@ -12,16 +12,12 @@ const duplicateRoute = require("./routes/duplicateRoute");
 const rawRoute = require("./routes/rawRoute");
 const createBin = require("./routes/createBin");
 
-
 // Middlewares
 const app = express();
 app.set("view engine", "ejs");
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json())
-
-
-
+app.use(express.json());
 
 // Keep Heroku Dyno alive
 //const DYNO_URL = process.env.BASE_URL;
@@ -44,13 +40,11 @@ app.post("/save", saveRoute);
 app.get("/:slug", getBySlugRoute);
 app.get("/:slug/duplicate", duplicateRoute);
 app.get("/:slug/raw", rawRoute);
-app.post("/create", createBin)
+app.post("/create", createBin);
 
-
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log("Listening...")
- // wakeDyno(DYNO_URL, opts);
+  console.log("Listening...");
+  // wakeDyno(DYNO_URL, opts);
 });
